@@ -1,0 +1,7 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_produksi_template,produksi.template.access,model_produksi_template,base.group_user,1,1,1,1
+access_produksi_template_step,produksi.template.step.access,model_produksi_template_step,base.group_user,1,1,1,1
+access_produksi_template_bahan,produksi.template.bahan.access,model_produksi_template_bahan,base.group_user,1,1,1,1
+access_produksi_order,produksi.order.access,model_produksi_order,base.group_user,1,1,1,1
+access_produksi_order_step,produksi.order.step.access,model_produksi_order_step,base.group_user,1,1,1,1
+access_produksi_order_bahan,produksi.order.bahan.access,model_produksi_order_bahan,base.group_user,1,1,1,1

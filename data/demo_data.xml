@@ -1,0 +1,493 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+
+       
+        <record id="product_susu_kedelai_original" model="product.product">
+            <field name="name">Susu Kedelai Original</field>
+            <field name="type">product</field>
+            <field name="list_price">8000</field>
+            <field name="default_code">SKD-ORI</field>
+        </record>
+
+        <record id="product_susu_kedelai_cokelat" model="product.product">
+            <field name="name">Susu Kedelai Cokelat</field>
+            <field name="type">product</field>
+            <field name="list_price">10000</field>
+            <field name="default_code">SKD-COK</field>
+        </record>
+
+        <record id="product_susu_kedelai_melon" model="product.product">
+            <field name="name">Susu Kedelai Melon</field>
+            <field name="type">product</field>
+            <field name="list_price">10000</field>
+            <field name="default_code">SKD-MLN</field>
+        </record>
+
+        <record id="product_susu_kedelai_strawberry" model="product.product">
+            <field name="name">Susu Kedelai Strawberry</field>
+            <field name="type">product</field>
+            <field name="list_price">12000</field>
+            <field name="default_code">SKD-STR</field>
+        </record>
+
+        
+        <record id="template_susu_kedelai_original" model="produksi.template">
+            <field name="name">Resep Susu Kedelai Original</field>
+            <field name="product_id" ref="product_susu_kedelai_original"/>
+            <field name="deskripsi">Proses pembuatan susu kedelai original tanpa tambahan perasa. Rasa natural kedelai murni.</field>
+        </record>
+
+      
+        <record id="step_ori_1" model="produksi.template.step">
+            <field name="template_id" ref="template_susu_kedelai_original"/>
+            <field name="sequence">10</field>
+            <field name="name">Sortasi &amp; Pencucian Kedelai</field>
+            <field name="durasi_estimasi">1.0</field>
+            <field name="instruksi">1. Pilih kedelai yang berkualitas baik, buang yang rusak/busuk
+2. Cuci kedelai dengan air bersih sebanyak 3x bilasan
+3. Pastikan tidak ada kotoran atau batu kecil</field>
+        </record>
+        <record id="step_ori_2" model="produksi.template.step">
+            <field name="template_id" ref="template_susu_kedelai_original"/>
+            <field name="sequence">20</field>
+            <field name="name">Perendaman Kedelai</field>
+            <field name="durasi_estimasi">8.0</field>
+            <field name="instruksi">1. Rendam kedelai dalam air bersih selama 8-12 jam (semalam)
+2. Perbandingan air dan kedelai = 3:1
+3. Kedelai yang sudah terendam sempurna akan mengembang 2x lipat
+4. Buang air rendaman setelah selesai</field>
+        </record>
+        <record id="step_ori_3" model="produksi.template.step">
+            <field name="template_id" ref="template_susu_kedelai_original"/>
+            <field name="sequence">30</field>
+            <field name="name">Penggilingan / Blending</field>
+            <field name="durasi_estimasi">1.5</field>
+            <field name="instruksi">1. Masukkan kedelai yang sudah direndam ke mesin penggiling/blender
+2. Tambahkan air panas (80°C) dengan perbandingan 8:1 terhadap kedelai kering
+3. Giling hingga halus (±3-5 menit per batch)
+4. Pastikan tidak ada gumpalan kasar</field>
+        </record>
+        <record id="step_ori_4" model="produksi.template.step">
+            <field name="template_id" ref="template_susu_kedelai_original"/>
+            <field name="sequence">40</field>
+            <field name="name">Penyaringan</field>
+            <field name="durasi_estimasi">1.0</field>
+            <field name="instruksi">1. Saring bubur kedelai menggunakan kain saring halus (80-100 mesh)
+2. Peras ampas hingga sari kedelai keluar maksimal
+3. Ampas bisa disimpan untuk olahan lain (tempe gembus, dll)
+4. Pastikan tidak ada ampas yang lolos ke sari kedelai</field>
+        </record>
+        <record id="step_ori_5" model="produksi.template.step">
+            <field name="template_id" ref="template_susu_kedelai_original"/>
+            <field name="sequence">50</field>
+            <field name="name">Perebusan / Pasteurisasi</field>
+            <field name="durasi_estimasi">1.0</field>
+            <field name="instruksi">1. Masak sari kedelai dengan api sedang hingga mendidih (100°C)
+2. Aduk terus menerus agar tidak gosong di bagian bawah
+3. Setelah mendidih, kecilkan api dan masak 15-20 menit lagi
+4. Buang busa yang muncul di permukaan
+5. Tambahkan gula secukupnya (opsional)</field>
+        </record>
+        <record id="step_ori_6" model="produksi.template.step">
+            <field name="template_id" ref="template_susu_kedelai_original"/>
+            <field name="sequence">60</field>
+            <field name="name">Pendinginan</field>
+            <field name="durasi_estimasi">2.0</field>
+            <field name="instruksi">1. Dinginkan susu kedelai hingga suhu ruang (±30°C)
+2. Bisa menggunakan water bath untuk mempercepat
+3. Jangan langsung dikemas saat masih panas</field>
+        </record>
+        <record id="step_ori_7" model="produksi.template.step">
+            <field name="template_id" ref="template_susu_kedelai_original"/>
+            <field name="sequence">70</field>
+            <field name="name">Pengemasan</field>
+            <field name="durasi_estimasi">1.5</field>
+            <field name="instruksi">1. Siapkan kemasan botol/cup yang sudah disterilkan
+2. Isi kemasan menggunakan mesin filling atau manual
+3. Tutup rapat-rapat
+4. Beri label (nama produk, tanggal produksi, tanggal kadaluarsa)
+5. Simpan di suhu dingin (4°C)</field>
+        </record>
+
+        <!-- Bahan Baku: Original -->
+        <record id="bahan_ori_1" model="produksi.template.bahan">
+            <field name="template_id" ref="template_susu_kedelai_original"/>
+            <field name="sequence">10</field>
+            <field name="nama_bahan">Kedelai Kering</field>
+            <field name="jumlah">5.0</field>
+            <field name="satuan">kg</field>
+            <field name="keterangan">Kedelai import atau lokal grade A</field>
+        </record>
+        <record id="bahan_ori_2" model="produksi.template.bahan">
+            <field name="template_id" ref="template_susu_kedelai_original"/>
+            <field name="sequence">20</field>
+            <field name="nama_bahan">Air Bersih</field>
+            <field name="jumlah">40.0</field>
+            <field name="satuan">liter</field>
+            <field name="keterangan">Air matang / air RO</field>
+        </record>
+        <record id="bahan_ori_3" model="produksi.template.bahan">
+            <field name="template_id" ref="template_susu_kedelai_original"/>
+            <field name="sequence">30</field>
+            <field name="nama_bahan">Gula Pasir</field>
+            <field name="jumlah">2.0</field>
+            <field name="satuan">kg</field>
+            <field name="keterangan">Opsional, sesuai selera</field>
+        </record>
+        <record id="bahan_ori_4" model="produksi.template.bahan">
+            <field name="template_id" ref="template_susu_kedelai_original"/>
+            <field name="sequence">40</field>
+            <field name="nama_bahan">Botol Kemasan 250ml</field>
+            <field name="jumlah">100</field>
+            <field name="satuan">pcs</field>
+            <field name="keterangan">Botol PET food grade</field>
+        </record>
+
+
+
+
+
+        <record id="template_susu_kedelai_cokelat" model="produksi.template">
+            <field name="name">Resep Susu Kedelai Cokelat</field>
+            <field name="product_id" ref="product_susu_kedelai_cokelat"/>
+            <field name="deskripsi">Proses pembuatan susu kedelai rasa cokelat. Ada tambahan langkah pencampuran cokelat sebelum pengemasan.</field>
+        </record>
+
+     
+        <record id="step_cok_1" model="produksi.template.step">
+            <field name="template_id" ref="template_susu_kedelai_cokelat"/>
+            <field name="sequence">10</field>
+            <field name="name">Sortasi &amp; Pencucian Kedelai</field>
+            <field name="durasi_estimasi">1.0</field>
+            <field name="instruksi">Sama seperti proses original - sortasi dan cuci kedelai</field>
+        </record>
+        <record id="step_cok_2" model="produksi.template.step">
+            <field name="template_id" ref="template_susu_kedelai_cokelat"/>
+            <field name="sequence">20</field>
+            <field name="name">Perendaman Kedelai</field>
+            <field name="durasi_estimasi">8.0</field>
+            <field name="instruksi">Rendam kedelai 8-12 jam dalam air bersih</field>
+        </record>
+        <record id="step_cok_3" model="produksi.template.step">
+            <field name="template_id" ref="template_susu_kedelai_cokelat"/>
+            <field name="sequence">30</field>
+            <field name="name">Penggilingan / Blending</field>
+            <field name="durasi_estimasi">1.5</field>
+            <field name="instruksi">Giling kedelai dengan air panas, perbandingan 8:1</field>
+        </record>
+        <record id="step_cok_4" model="produksi.template.step">
+            <field name="template_id" ref="template_susu_kedelai_cokelat"/>
+            <field name="sequence">40</field>
+            <field name="name">Penyaringan</field>
+            <field name="durasi_estimasi">1.0</field>
+            <field name="instruksi">Saring dengan kain saring halus 80-100 mesh</field>
+        </record>
+        <record id="step_cok_5" model="produksi.template.step">
+            <field name="template_id" ref="template_susu_kedelai_cokelat"/>
+            <field name="sequence">50</field>
+            <field name="name">Perebusan / Pasteurisasi</field>
+            <field name="durasi_estimasi">1.0</field>
+            <field name="instruksi">Masak sari kedelai hingga mendidih, aduk terus, masak 15-20 menit</field>
+        </record>
+        <record id="step_cok_6" model="produksi.template.step">
+            <field name="template_id" ref="template_susu_kedelai_cokelat"/>
+            <field name="sequence">55</field>
+            <field name="name">Pencampuran Cokelat &amp; Gula</field>
+            <field name="durasi_estimasi">0.5</field>
+            <field name="instruksi">1. Campurkan bubuk cokelat (cocoa powder) saat susu masih panas
+2. Aduk rata hingga cokelat larut sempurna
+3. Tambahkan gula sesuai takaran
+4. Pastikan tidak ada gumpalan cokelat</field>
+        </record>
+        <record id="step_cok_7" model="produksi.template.step">
+            <field name="template_id" ref="template_susu_kedelai_cokelat"/>
+            <field name="sequence">60</field>
+            <field name="name">Pendinginan</field>
+            <field name="durasi_estimasi">2.0</field>
+            <field name="instruksi">Dinginkan hingga suhu ruang (±30°C)</field>
+        </record>
+        <record id="step_cok_8" model="produksi.template.step">
+            <field name="template_id" ref="template_susu_kedelai_cokelat"/>
+            <field name="sequence">70</field>
+            <field name="name">Pengemasan</field>
+            <field name="durasi_estimasi">1.5</field>
+            <field name="instruksi">Kemas ke botol steril, beri label, simpan di suhu dingin</field>
+        </record>
+
+
+        <record id="bahan_cok_1" model="produksi.template.bahan">
+            <field name="template_id" ref="template_susu_kedelai_cokelat"/>
+            <field name="sequence">10</field>
+            <field name="nama_bahan">Kedelai Kering</field>
+            <field name="jumlah">5.0</field>
+            <field name="satuan">kg</field>
+        </record>
+        <record id="bahan_cok_2" model="produksi.template.bahan">
+            <field name="template_id" ref="template_susu_kedelai_cokelat"/>
+            <field name="sequence">20</field>
+            <field name="nama_bahan">Air Bersih</field>
+            <field name="jumlah">40.0</field>
+            <field name="satuan">liter</field>
+        </record>
+        <record id="bahan_cok_3" model="produksi.template.bahan">
+            <field name="template_id" ref="template_susu_kedelai_cokelat"/>
+            <field name="sequence">30</field>
+            <field name="nama_bahan">Bubuk Cokelat (Cocoa Powder)</field>
+            <field name="jumlah">500</field>
+            <field name="satuan">gram</field>
+            <field name="keterangan">Cocoa powder murni tanpa campuran</field>
+        </record>
+        <record id="bahan_cok_4" model="produksi.template.bahan">
+            <field name="template_id" ref="template_susu_kedelai_cokelat"/>
+            <field name="sequence">40</field>
+            <field name="nama_bahan">Gula Pasir</field>
+            <field name="jumlah">3.0</field>
+            <field name="satuan">kg</field>
+            <field name="keterangan">Lebih banyak dari original karena cokelat pahit</field>
+        </record>
+        <record id="bahan_cok_5" model="produksi.template.bahan">
+            <field name="template_id" ref="template_susu_kedelai_cokelat"/>
+            <field name="sequence">50</field>
+            <field name="nama_bahan">Botol Kemasan 250ml</field>
+            <field name="jumlah">100</field>
+            <field name="satuan">pcs</field>
+        </record>
+
+       
+
+
+        <record id="template_susu_kedelai_melon" model="produksi.template">
+            <field name="name">Resep Susu Kedelai Melon</field>
+            <field name="product_id" ref="product_susu_kedelai_melon"/>
+            <field name="deskripsi">Proses pembuatan susu kedelai rasa melon. Menggunakan essence melon dan pewarna makanan hijau.</field>
+        </record>
+
+        <!-- Langkah Proses: Melon -->
+        <record id="step_mln_1" model="produksi.template.step">
+            <field name="template_id" ref="template_susu_kedelai_melon"/>
+            <field name="sequence">10</field>
+            <field name="name">Sortasi &amp; Pencucian Kedelai</field>
+            <field name="durasi_estimasi">1.0</field>
+            <field name="instruksi">Sortasi dan cuci kedelai</field>
+        </record>
+        <record id="step_mln_2" model="produksi.template.step">
+            <field name="template_id" ref="template_susu_kedelai_melon"/>
+            <field name="sequence">20</field>
+            <field name="name">Perendaman Kedelai</field>
+            <field name="durasi_estimasi">8.0</field>
+            <field name="instruksi">Rendam kedelai 8-12 jam</field>
+        </record>
+        <record id="step_mln_3" model="produksi.template.step">
+            <field name="template_id" ref="template_susu_kedelai_melon"/>
+            <field name="sequence">30</field>
+            <field name="name">Penggilingan / Blending</field>
+            <field name="durasi_estimasi">1.5</field>
+            <field name="instruksi">Giling kedelai dengan air panas</field>
+        </record>
+        <record id="step_mln_4" model="produksi.template.step">
+            <field name="template_id" ref="template_susu_kedelai_melon"/>
+            <field name="sequence">40</field>
+            <field name="name">Penyaringan</field>
+            <field name="durasi_estimasi">1.0</field>
+            <field name="instruksi">Saring dengan kain saring halus</field>
+        </record>
+        <record id="step_mln_5" model="produksi.template.step">
+            <field name="template_id" ref="template_susu_kedelai_melon"/>
+            <field name="sequence">50</field>
+            <field name="name">Perebusan / Pasteurisasi</field>
+            <field name="durasi_estimasi">1.0</field>
+            <field name="instruksi">Masak sari kedelai hingga mendidih 15-20 menit</field>
+        </record>
+        <record id="step_mln_6" model="produksi.template.step">
+            <field name="template_id" ref="template_susu_kedelai_melon"/>
+            <field name="sequence">55</field>
+            <field name="name">Pencampuran Essence Melon &amp; Pewarna</field>
+            <field name="durasi_estimasi">0.5</field>
+            <field name="instruksi">1. Setelah susu agak dingin (±70°C), tambahkan essence melon food grade
+2. Tambahkan pewarna makanan hijau secukupnya
+3. Aduk rata hingga warna dan aroma merata
+4. Tambahkan gula sesuai takaran</field>
+        </record>
+        <record id="step_mln_7" model="produksi.template.step">
+            <field name="template_id" ref="template_susu_kedelai_melon"/>
+            <field name="sequence">60</field>
+            <field name="name">Pendinginan</field>
+            <field name="durasi_estimasi">2.0</field>
+            <field name="instruksi">Dinginkan hingga suhu ruang</field>
+        </record>
+        <record id="step_mln_8" model="produksi.template.step">
+            <field name="template_id" ref="template_susu_kedelai_melon"/>
+            <field name="sequence">70</field>
+            <field name="name">Pengemasan</field>
+            <field name="durasi_estimasi">1.5</field>
+            <field name="instruksi">Kemas ke botol steril, beri label, simpan di suhu dingin</field>
+        </record>
+
+        <!-- Bahan Baku: Melon -->
+        <record id="bahan_mln_1" model="produksi.template.bahan">
+            <field name="template_id" ref="template_susu_kedelai_melon"/>
+            <field name="sequence">10</field>
+            <field name="nama_bahan">Kedelai Kering</field>
+            <field name="jumlah">5.0</field>
+            <field name="satuan">kg</field>
+        </record>
+        <record id="bahan_mln_2" model="produksi.template.bahan">
+            <field name="template_id" ref="template_susu_kedelai_melon"/>
+            <field name="sequence">20</field>
+            <field name="nama_bahan">Air Bersih</field>
+            <field name="jumlah">40.0</field>
+            <field name="satuan">liter</field>
+        </record>
+        <record id="bahan_mln_3" model="produksi.template.bahan">
+            <field name="template_id" ref="template_susu_kedelai_melon"/>
+            <field name="sequence">30</field>
+            <field name="nama_bahan">Essence Melon Food Grade</field>
+            <field name="jumlah">50</field>
+            <field name="satuan">ml</field>
+            <field name="keterangan">Perisa melon food grade</field>
+        </record>
+        <record id="bahan_mln_4" model="produksi.template.bahan">
+            <field name="template_id" ref="template_susu_kedelai_melon"/>
+            <field name="sequence">40</field>
+            <field name="nama_bahan">Pewarna Makanan Hijau</field>
+            <field name="jumlah">10</field>
+            <field name="satuan">ml</field>
+            <field name="keterangan">Pewarna makanan food grade</field>
+        </record>
+        <record id="bahan_mln_5" model="produksi.template.bahan">
+            <field name="template_id" ref="template_susu_kedelai_melon"/>
+            <field name="sequence">50</field>
+            <field name="nama_bahan">Gula Pasir</field>
+            <field name="jumlah">2.5</field>
+            <field name="satuan">kg</field>
+        </record>
+        <record id="bahan_mln_6" model="produksi.template.bahan">
+            <field name="template_id" ref="template_susu_kedelai_melon"/>
+            <field name="sequence">60</field>
+            <field name="nama_bahan">Botol Kemasan 250ml</field>
+            <field name="jumlah">100</field>
+            <field name="satuan">pcs</field>
+        </record>
+
+ 
+
+        <record id="template_susu_kedelai_strawberry" model="produksi.template">
+            <field name="name">Resep Susu Kedelai Strawberry</field>
+            <field name="product_id" ref="product_susu_kedelai_strawberry"/>
+            <field name="deskripsi">Proses pembuatan susu kedelai rasa strawberry. Menggunakan buah strawberry segar yang diblender sebagai campuran.</field>
+        </record>
+
+        
+        <record id="step_str_1" model="produksi.template.step">
+            <field name="template_id" ref="template_susu_kedelai_strawberry"/>
+            <field name="sequence">10</field>
+            <field name="name">Sortasi &amp; Pencucian Kedelai</field>
+            <field name="durasi_estimasi">1.0</field>
+            <field name="instruksi">Sortasi dan cuci kedelai</field>
+        </record>
+        <record id="step_str_2" model="produksi.template.step">
+            <field name="template_id" ref="template_susu_kedelai_strawberry"/>
+            <field name="sequence">15</field>
+            <field name="name">Persiapan Buah Strawberry</field>
+            <field name="durasi_estimasi">0.5</field>
+            <field name="instruksi">1. Cuci strawberry segar
+2. Buang tangkainya
+3. Blender strawberry hingga halus
+4. Saring untuk membuang biji
+5. Simpan puree strawberry di wadah tertutup</field>
+        </record>
+        <record id="step_str_3" model="produksi.template.step">
+            <field name="template_id" ref="template_susu_kedelai_strawberry"/>
+            <field name="sequence">20</field>
+            <field name="name">Perendaman Kedelai</field>
+            <field name="durasi_estimasi">8.0</field>
+            <field name="instruksi">Rendam kedelai 8-12 jam</field>
+        </record>
+        <record id="step_str_4" model="produksi.template.step">
+            <field name="template_id" ref="template_susu_kedelai_strawberry"/>
+            <field name="sequence">30</field>
+            <field name="name">Penggilingan / Blending</field>
+            <field name="durasi_estimasi">1.5</field>
+            <field name="instruksi">Giling kedelai dengan air panas</field>
+        </record>
+        <record id="step_str_5" model="produksi.template.step">
+            <field name="template_id" ref="template_susu_kedelai_strawberry"/>
+            <field name="sequence">40</field>
+            <field name="name">Penyaringan</field>
+            <field name="durasi_estimasi">1.0</field>
+            <field name="instruksi">Saring dengan kain saring halus</field>
+        </record>
+        <record id="step_str_6" model="produksi.template.step">
+            <field name="template_id" ref="template_susu_kedelai_strawberry"/>
+            <field name="sequence">50</field>
+            <field name="name">Perebusan / Pasteurisasi</field>
+            <field name="durasi_estimasi">1.0</field>
+            <field name="instruksi">Masak sari kedelai hingga mendidih 15-20 menit</field>
+        </record>
+        <record id="step_str_7" model="produksi.template.step">
+            <field name="template_id" ref="template_susu_kedelai_strawberry"/>
+            <field name="sequence">55</field>
+            <field name="name">Pencampuran Puree Strawberry</field>
+            <field name="durasi_estimasi">0.5</field>
+            <field name="instruksi">1. Setelah susu agak dingin (±60°C), campurkan puree strawberry
+2. Tambahkan pewarna merah muda secukupnya (opsional)
+3. Tambahkan gula sesuai takaran
+4. Aduk rata hingga warna merata</field>
+        </record>
+        <record id="step_str_8" model="produksi.template.step">
+            <field name="template_id" ref="template_susu_kedelai_strawberry"/>
+            <field name="sequence">60</field>
+            <field name="name">Pendinginan</field>
+            <field name="durasi_estimasi">2.0</field>
+            <field name="instruksi">Dinginkan hingga suhu ruang</field>
+        </record>
+        <record id="step_str_9" model="produksi.template.step">
+            <field name="template_id" ref="template_susu_kedelai_strawberry"/>
+            <field name="sequence">70</field>
+            <field name="name">Pengemasan</field>
+            <field name="durasi_estimasi">1.5</field>
+            <field name="instruksi">Kemas ke botol steril, beri label, simpan di suhu dingin</field>
+        </record>
+
+
+
+        <record id="bahan_str_1" model="produksi.template.bahan">
+            <field name="template_id" ref="template_susu_kedelai_strawberry"/>
+            <field name="sequence">10</field>
+            <field name="nama_bahan">Kedelai Kering</field>
+            <field name="jumlah">5.0</field>
+            <field name="satuan">kg</field>
+        </record>
+        <record id="bahan_str_2" model="produksi.template.bahan">
+            <field name="template_id" ref="template_susu_kedelai_strawberry"/>
+            <field name="sequence">20</field>
+            <field name="nama_bahan">Air Bersih</field>
+            <field name="jumlah">40.0</field>
+            <field name="satuan">liter</field>
+        </record>
+        <record id="bahan_str_3" model="produksi.template.bahan">
+            <field name="template_id" ref="template_susu_kedelai_strawberry"/>
+            <field name="sequence">30</field>
+            <field name="nama_bahan">Strawberry Segar</field>
+            <field name="jumlah">2.0</field>
+            <field name="satuan">kg</field>
+            <field name="keterangan">Pilih yang matang sempurna</field>
+        </record>
+        <record id="bahan_str_4" model="produksi.template.bahan">
+            <field name="template_id" ref="template_susu_kedelai_strawberry"/>
+            <field name="sequence">40</field>
+            <field name="nama_bahan">Gula Pasir</field>
+            <field name="jumlah">2.5</field>
+            <field name="satuan">kg</field>
+        </record>
+        <record id="bahan_str_5" model="produksi.template.bahan">
+            <field name="template_id" ref="template_susu_kedelai_strawberry"/>
+            <field name="sequence">50</field>
+            <field name="nama_bahan">Botol Kemasan 250ml</field>
+            <field name="jumlah">100</field>
+            <field name="satuan">pcs</field>
+        </record>
+
+    </data>
+</odoo>

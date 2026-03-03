@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="seq_produksi_order" model="ir.sequence">
+        <field name="name">Sequence Order Produksi</field>
+        <field name="code">produksi.order.seq</field>
+        <field name="prefix">SPK/%(y)s/%(month)s/</field>
+        <field name="padding">4</field>
+    </record>
+
+    <!-- Form View: Order Produksi -->
+    <record id="view_produksi_order_form" model="ir.ui.view">
+        <field name="name">produksi.order.form</field>
+        <field name="model">produksi.order</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <button name="action_confirm" string="Konfirmasi" type="object"
+                            class="oe_highlight" invisible="state != 'draft'"/>
+                    <button name="action_start" string="Mulai Produksi" type="object"
+                            class="oe_highlight" invisible="state != 'confirmed'"/>
+                    <button name="action_qc" string="Kirim ke QC" type="object"
+                            class="oe_highlight" invisible="state != 'in_progress'"/>
+                    <button name="action_done" string="Selesai / Lolos QC" type="object"
+                            class="oe_highlight" invisible="state != 'qc'"/>
+                    <button name="action_cancel" string="Batalkan" type="object"
+                            invisible="state in ('done', 'cancel')"/>
+                    <button name="action_draft" string="Set ke Draft" type="object"
+                            invisible="state != 'cancel'"/>
+                    <field name="state" widget="statusbar"
+                           statusbar_visible="draft,confirmed,in_progress,qc,done"/>
+                </header>
+                <sheet>
+                    <div class="oe_button_box" name="button_box">
+                    </div>
+                    <div class="oe_title">
+                        <label for="name"/>
+                        <h1><field name="name"/></h1>
+                    </div>
+
+                    <group>
+                        <group string="Informasi Produksi">
+                            <field name="template_id"
+                                   options="{'no_create': True}"
+                                   readonly="state != 'draft'"/>
+                            <field name="product_id"/>
+                            <field name="jumlah_target"/>
+                            <field name="satuan_produksi"/>
+                        </group>
+                        <group string="Jadwal &amp; Tim">
+                            <field name="tanggal_mulai"/>
+                            <field name="tanggal_selesai"/>
+                            <field name="penanggung_jawab" widget="many2one_avatar"/>
+                            <field name="asal_sales" invisible="not asal_sales"/>
+                        </group>
+                    </group>
+
+                    <!-- Progress Bar -->
+                    <group>
+                        <field name="progress" widget="progressbar"/>
+                    </group>
+
+                    <notebook>
+                        <page string="Langkah Proses Produksi">
+                            <field name="step_ids">
+                                <tree editable="bottom"
+                                      decoration-success="state == 'done'"
+                                      decoration-info="state == 'in_progress'"
+                                      decoration-muted="state == 'skip'">
+                                    <field name="sequence" widget="handle"/>
+                                    <field name="name"/>
+                                    <field name="durasi_estimasi" widget="float_time"/>
+                                    <field name="durasi_aktual" widget="float_time"/>
+                                    <field name="instruksi"/>
+                                    <field name="catatan_operator"/>
+                                    <field name="state" widget="badge"
+                                           decoration-success="state == 'done'"
+                                           decoration-info="state == 'in_progress'"
+                                           decoration-warning="state == 'pending'"/>
+                                    <button name="action_start_step" string="▶ Mulai"
+                                            type="object" class="btn-primary"
+                                            invisible="state != 'pending'"/>
+                                    <button name="action_done_step" string="✅ Selesai"
+                                            type="object" class="btn-success"
+                                            invisible="state != 'in_progress'"/>
+                                    <button name="action_skip_step" string="⏭ Skip"
+                                            type="object" class="btn-warning"
+                                            invisible="state in ('done', 'skip')"/>
+                                </tree>
+                            </field>
+                        </page>
+                        <page string="Bahan Baku">
+                            <field name="bahan_ids">
+                                <tree editable="bottom">
+                                    <field name="sequence" widget="handle"/>
+                                    <field name="nama_bahan"/>
+                                    <field name="jumlah"/>
+                                    <field name="satuan"/>
+                                    <field name="keterangan"/>
+                                </tree>
+                            </field>
+                        </page>
+                        <page string="Catatan">
+                            <field name="catatan" placeholder="Catatan tambahan dari operator atau supervisor..."/>
+                        </page>
+                    </notebook>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids"/>
+                    <field name="activity_ids"/>
+                    <field name="message_ids"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <!-- Tree View: Order Produksi -->
+    <record id="view_produksi_order_tree" model="ir.ui.view">
+        <field name="name">produksi.order.tree</field>
+        <field name="model">produksi.order</field>
+        <field name="arch" type="xml">
+            <tree decoration-success="state == 'done'"
+                  decoration-info="state == 'draft'"
+                  decoration-warning="state == 'in_progress'"
+                  decoration-danger="state == 'cancel'">
+                <field name="name"/>
+                <field name="product_id"/>
+                <field name="template_id"/>
+                <field name="jumlah_target"/>
+                <field name="satuan_produksi"/>
+                <field name="penanggung_jawab" widget="many2one_avatar"/>
+                <field name="tanggal_mulai"/>
+                <field name="progress" widget="progressbar"/>
+                <field name="state" widget="badge"
+                       decoration-success="state == 'done'"
+                       decoration-info="state in ('draft', 'confirmed')"
+                       decoration-warning="state == 'in_progress'"
+                       decoration-danger="state == 'cancel'"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Search View: Order Produksi -->
+    <record id="view_produksi_order_search" model="ir.ui.view">
+        <field name="name">produksi.order.search</field>
+        <field name="model">produksi.order</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name"/>
+                <field name="product_id"/>
+                <field name="template_id"/>
+                <field name="penanggung_jawab"/>
+                <filter name="filter_draft" string="Draft" domain="[('state','=','draft')]"/>
+                <filter name="filter_confirmed" string="Dikonfirmasi" domain="[('state','=','confirmed')]"/>
+                <filter name="filter_in_progress" string="Dalam Proses" domain="[('state','=','in_progress')]"/>
+                <filter name="filter_qc" string="QC" domain="[('state','=','qc')]"/>
+                <filter name="filter_done" string="Selesai" domain="[('state','=','done')]"/>
+                <separator/>
+                <group expand="0" string="Group By...">
+                    <filter string="Produk" name="group_product" context="{'group_by':'product_id'}"/>
+                    <filter string="Template" name="group_template" context="{'group_by':'template_id'}"/>
+                    <filter string="Status" name="group_state" context="{'group_by':'state'}"/>
+                    <filter string="Penanggung Jawab" name="group_pj" context="{'group_by':'penanggung_jawab'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <!-- Action: Order Produksi -->
+    <record id="action_produksi_order" model="ir.actions.act_window">
+        <field name="name">Order Produksi</field>
+        <field name="res_model">produksi.order</field>
+        <field name="view_mode">tree,form</field>
+        <field name="search_view_id" ref="view_produksi_order_search"/>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Buat Order Produksi Pertama!
+            </p>
+            <p>
+                Pilih template produksi, langkah proses dan bahan baku
+                akan terisi otomatis.
+            </p>
+        </field>
+    </record>
+
+
+    <menuitem id="menu_produksi_root" name="Produksi" sequence="10"
+              web_icon="produksi_edi,static/description/icon.png"/>
+
+    <menuitem id="menu_produksi_order" name="Order Produksi (SPK)"
+              parent="menu_produksi_root" action="action_produksi_order"
+              sequence="10"/>
+
+    <menuitem id="menu_produksi_config" name="Konfigurasi"
+              parent="menu_produksi_root" sequence="90"/>
+
+    <menuitem id="menu_produksi_template" name="Template Produksi"
+              parent="menu_produksi_config" action="action_produksi_template"
+              sequence="10"/>
+
+</odoo>
