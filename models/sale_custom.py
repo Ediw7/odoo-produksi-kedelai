@@ -5,22 +5,19 @@ class SaleOrderInherit(models.Model):
     _inherit = 'sale.order'
 
     def action_confirm(self):
-        """
-        Override sale order confirm → otomatis buat order produksi
-        berdasarkan template produksi yang terhubung ke produk.
-        """
+     
         res = super(SaleOrderInherit, self).action_confirm()
 
         for order in self:
             for line in order.order_line:
-                # Cari template produksi untuk produk ini
+                
                 template = self.env['produksi.template'].search([
                     ('product_id', '=', line.product_id.id),
                     ('active', '=', True),
                 ], limit=1)
 
                 if template:
-                    # Siapkan langkah proses dari template
+               
                     step_vals = []
                     for step in template.step_ids:
                         step_vals.append((0, 0, {
@@ -30,7 +27,7 @@ class SaleOrderInherit(models.Model):
                             'instruksi': step.instruksi,
                         }))
 
-                    # Siapkan bahan baku dari template
+                    
                     bahan_vals = []
                     for bahan in template.bahan_ids:
                         bahan_vals.append((0, 0, {

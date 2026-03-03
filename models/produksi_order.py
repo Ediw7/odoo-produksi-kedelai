@@ -3,11 +3,7 @@ from odoo.exceptions import ValidationError
 
 
 class ProduksiOrder(models.Model):
-    """
-    Order / SPK (Surat Perintah Kerja) Produksi.
-    Dibuat berdasarkan template produksi. Langkah-langkah proses dan bahan baku
-    otomatis di-copy dari template yang dipilih.
-    """
+   
     _name = 'produksi.order'
     _description = 'Order Produksi'
     _order = 'tanggal_mulai desc, id desc'
@@ -63,7 +59,7 @@ class ProduksiOrder(models.Model):
         tracking=True,
     )
 
-    # ---- Relasi Langkah & Bahan ----
+   
     step_ids = fields.One2many(
         'produksi.order.step',
         'order_id',
@@ -78,7 +74,6 @@ class ProduksiOrder(models.Model):
     catatan = fields.Text(string='Catatan Tambahan')
     asal_sales = fields.Char(string='Asal Sales Order', readonly=True)
 
-    # ---- Status ----
     state = fields.Selection([
         ('draft', 'Draft'),
         ('confirmed', 'Dikonfirmasi'),
@@ -88,7 +83,7 @@ class ProduksiOrder(models.Model):
         ('cancel', 'Dibatalkan'),
     ], string='Status', default='draft', tracking=True)
 
-    # ---- Computed ----
+
     progress = fields.Float(
         string='Progress (%)',
         compute='_compute_progress',
@@ -108,7 +103,7 @@ class ProduksiOrder(models.Model):
 
     @api.onchange('template_id')
     def _onchange_template_id(self):
-        """Saat template dipilih, auto-fill langkah proses dan bahan baku."""
+       
         if self.template_id:
             
             step_vals = []
@@ -173,10 +168,7 @@ class ProduksiOrder(models.Model):
 
 
 class ProduksiOrderStep(models.Model):
-    """
-    Langkah proses produksi di dalam Order.
-    Dicopy dari template, bisa di-track status per langkah.
-    """
+
     _name = 'produksi.order.step'
     _description = 'Langkah Proses Order Produksi'
     _order = 'sequence, id'

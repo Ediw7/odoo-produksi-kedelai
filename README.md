@@ -31,7 +31,7 @@ Modul menyertakan 4 produk demo:
 1. Clone repository ini ke folder `custom_addons` Odoo:
    ```bash
    cd /path/to/custom_addons
-   git clone https://github.com/USERNAME/odoo-produksi-kedelai.git produksi_edi
+   git clone https://github.com/Ediw7/odoo-produksi-kedelai.git produksi_edi
    ```
 
 2. Restart Odoo dan update daftar modul

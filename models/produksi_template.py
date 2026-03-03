@@ -2,13 +2,7 @@ from odoo import models, fields, api
 
 
 class ProduksiTemplate(models.Model):
-    """
-    Template / Resep Produksi.
-    Setiap produk bisa punya template proses produksi sendiri.
-    Contoh:
-      - "Resep Susu Kedelai Original" → Perendaman → Penggilingan → Perebusan → Penyaringan → Pengemasan
-      - "Resep Susu Kedelai Cokelat" → Perendaman → Penggilingan → Perebusan → Pencampuran Cokelat → Penyaringan → Pengemasan
-    """
+  
     _name = 'produksi.template'
     _description = 'Template Proses Produksi'
     _order = 'name'
@@ -55,10 +49,7 @@ class ProduksiTemplate(models.Model):
 
 
 class ProduksiTemplateStep(models.Model):
-    """
-    Langkah-langkah proses di dalam template.
-    Diurutkan berdasarkan sequence.
-    """
+  
     _name = 'produksi.template.step'
     _description = 'Langkah Proses Template'
     _order = 'sequence, id'
@@ -87,10 +78,7 @@ class ProduksiTemplateStep(models.Model):
 
 
 class ProduksiTemplateBahan(models.Model):
-    """
-    Daftar bahan baku default yang dibutuhkan per template.
-    Saat membuat order produksi, bahan ini akan di-copy.
-    """
+  
     _name = 'produksi.template.bahan'
     _description = 'Bahan Baku Template'
     _order = 'sequence, id'

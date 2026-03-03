@@ -38,20 +38,6 @@ Cocok untuk produksi/bisnis yang ingin kontrol penuh atas data dan sistem.
 
 ---
 
-## 🖥️ Pilihan Server / VPS
-
-| Provider | Harga Mulai | Lokasi | Cocok Untuk |
-|----------|-------------|--------|-------------|
-| **DigitalOcean** | $6/bulan | Singapore | Startup, UKM |
-| **Hetzner** | €4/bulan | Eropa | Hemat budget |
-| **Contabo** | €5/bulan | Eropa/Asia | Hemat budget |
-| **AWS Lightsail** | $5/bulan | Singapore | Enterprise |
-| **Google Cloud** | $7/bulan | Jakarta | Enterprise |
-| **IDCloudHost** | Rp 50rb/bulan | Jakarta | Lokal Indonesia |
-| **Niagahoster VPS** | Rp 58rb/bulan | Jakarta | Lokal Indonesia |
-| **Biznet Gio** | Rp 44rb/bulan | Jakarta | Lokal Indonesia |
-
-> **Rekomendasi spec minimum**: 2 vCPU, 4GB RAM, 40GB SSD, Ubuntu 22.04/24.04
 
 ---
 

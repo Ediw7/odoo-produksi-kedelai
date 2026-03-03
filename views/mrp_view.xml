@@ -8,7 +8,7 @@
         <field name="padding">4</field>
     </record>
 
-    <!-- Form View: Order Produksi -->
+   
     <record id="view_produksi_order_form" model="ir.ui.view">
         <field name="name">produksi.order.form</field>
         <field name="model">produksi.order</field>
@@ -114,7 +114,7 @@
         </field>
     </record>
 
-    <!-- Tree View: Order Produksi -->
+
     <record id="view_produksi_order_tree" model="ir.ui.view">
         <field name="name">produksi.order.tree</field>
         <field name="model">produksi.order</field>
@@ -140,7 +140,7 @@
         </field>
     </record>
 
-    <!-- Search View: Order Produksi -->
+
     <record id="view_produksi_order_search" model="ir.ui.view">
         <field name="name">produksi.order.search</field>
         <field name="model">produksi.order</field>
@@ -166,7 +166,7 @@
         </field>
     </record>
 
-    <!-- Action: Order Produksi -->
+
     <record id="action_produksi_order" model="ir.actions.act_window">
         <field name="name">Order Produksi</field>
         <field name="res_model">produksi.order</field>
