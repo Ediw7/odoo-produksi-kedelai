@@ -72,6 +72,11 @@ class ProduksiOrder(models.Model):
     )
 
     catatan = fields.Text(string='Catatan Tambahan')
+    sale_order_id = fields.Many2one(
+        'sale.order',
+        string='Sales Order',
+        readonly=True,
+    )
     asal_sales = fields.Char(string='Asal Sales Order', readonly=True)
 
     state = fields.Selection([

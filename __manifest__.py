@@ -15,6 +15,7 @@
         'security/ir.model.access.csv',
         'views/template_view.xml',
         'views/mrp_view.xml',
+        'views/sale_order_view.xml',
         'data/demo_data.xml',
     ],
     'installable': True,
