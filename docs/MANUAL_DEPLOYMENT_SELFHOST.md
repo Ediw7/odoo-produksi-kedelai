@@ -2,8 +2,12 @@
 
 ## 📌 Overview
 
-Panduan ini menjelaskan cara deploy Odoo di server sendiri (self-hosted).
+Panduan ini menjelaskan cara deploy Odoo 17 Community Edition di server sendiri (self-hosted).
 Cocok untuk produksi/bisnis yang ingin kontrol penuh atas data dan sistem.
+
+> **📚 Referensi Utama:**
+> Panduan ini disusun berdasarkan dokumentasi resmi Odoo dan sumber-sumber terpercaya.
+> Lihat bagian [Referensi](#-referensi) di bawah untuk daftar lengkap sumber.
 
 ```
 ┌─────────────────────────────────────────────────────┐
@@ -560,3 +564,42 @@ A: Odoo Community TIDAK ada batasan user. Kalau pakai VPS 4GB RAM, bisa handle 2
 
 **Q: Bagaimana kalau mau upgrade versi Odoo?**
 A: Upgrade versi Odoo (misal 17 → 18) perlu migrasi database. Ini proses yang perlu hati-hati. Sebaiknya dilakukan oleh developer berpengalaman.
+
+---
+
+## 📚 Referensi
+
+Panduan ini disusun berdasarkan sumber-sumber berikut:
+
+### Dokumentasi Resmi Odoo
+| # | Sumber | URL |
+|---|--------|-----|
+| 1 | Odoo 17 - Source Install (Official) | https://www.odoo.com/documentation/17.0/administration/on_premise/source.html |
+| 2 | Odoo 17 - System Configuration / Deployment (Official) | https://www.odoo.com/documentation/17.0/administration/on_premise/deploy.html |
+| 3 | Odoo 17 - Install and Maintain (Official) | https://www.odoo.com/documentation/17.0/administration/on_premise.html |
+| 4 | Odoo GitHub Repository | https://github.com/odoo/odoo |
+
+### Video Tutorial
+| # | Sumber | URL |
+|---|--------|-----|
+| 5 | "How To Install Odoo 17 in Ubuntu Server" - YouTube | https://youtu.be/sEQXJ_JHyMg |
+
+### Artikel & Blog
+| # | Sumber | URL |
+|---|--------|-----|
+| 6 | Cybrosys - How To Install Odoo 17 on Ubuntu 22.04 | https://www.cybrosys.com/blog/how-to-install-odoo-17-on-ubuntu-22-04 |
+| 7 | RoseHosting - How to Install Odoo 17 on Ubuntu | https://www.rosehosting.com/blog/how-to-install-odoo-17-on-ubuntu/ |
+| 8 | Heliconia - Odoo 17 Installation on Ubuntu | https://www.heliconia.io/blog/odoo-17-installation-on-ubuntu |
+
+### Dokumentasi Tools Pendukung
+| # | Sumber | URL |
+|---|--------|-----|
+| 9 | PostgreSQL Official Documentation | https://www.postgresql.org/docs/ |
+| 10 | Nginx Reverse Proxy Guide | https://nginx.org/en/docs/http/ngx_http_proxy_module.html |
+| 11 | Let's Encrypt (Certbot) Documentation | https://certbot.eff.org/instructions |
+| 12 | UFW Firewall Guide (Ubuntu) | https://help.ubuntu.com/community/UFW |
+
+### Catatan
+- Langkah-langkah pada panduan ini utamanya mengacu pada **Dokumentasi Resmi Odoo [1][2]** dan **Video Tutorial [5]**
+- Konfigurasi Nginx dan SSL mengacu pada **Odoo System Configuration [2]** dan **Nginx Official Docs [10]**
+- Best practice keamanan mengacu pada section Security di **Odoo Deploy Documentation [2]**
