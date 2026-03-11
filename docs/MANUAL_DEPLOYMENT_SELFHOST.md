@@ -1,11 +1,10 @@
-# 📘 Manual Deployment Self-Hosted Odoo (VPS / Server Sendiri)
+# Manual Deployment Self-Hosted Odoo (VPS / Server Sendiri)
 
-## 📌 Overview
+## Overview
 
 Panduan ini menjelaskan cara deploy Odoo 17 Community Edition di server sendiri (self-hosted).
-Cocok untuk produksi/bisnis yang ingin kontrol penuh atas data dan sistem.
 
-> **📚 Referensi Utama:**
+> ** Referensi Utama:**
 > Panduan ini disusun berdasarkan dokumentasi resmi Odoo dan sumber-sumber terpercaya.
 > Lihat bagian [Referensi](#-referensi) di bawah untuk daftar lengkap sumber.
 
@@ -45,7 +44,7 @@ Cocok untuk produksi/bisnis yang ingin kontrol penuh atas data dan sistem.
 
 ---
 
-## 🚀 LANGKAH 1: Persiapan Server
+## LANGKAH 1: Persiapan Server
 
 ### 1.1 Login ke Server
 
@@ -93,7 +92,7 @@ sudo apt install -y \
 
 ---
 
-## 🗄️ LANGKAH 2: Install PostgreSQL (Database)
+## LANGKAH 2: Install PostgreSQL (Database)
 
 ```bash
 # Install PostgreSQL
@@ -109,7 +108,7 @@ sudo su - postgres -c "psql -c '\\du'" | grep odoo
 
 ---
 
-## 📦 LANGKAH 3: Install Odoo
+## LANGKAH 3: Install Odoo
 
 ### Opsi A: Install dari Source (REKOMENDASI untuk development)
 
@@ -149,7 +148,7 @@ sudo apt install -y odoo
 
 ---
 
-## ⚙️ LANGKAH 4: Konfigurasi Odoo
+##  LANGKAH 4: Konfigurasi Odoo
 
 ### 4.1 Buat File Konfigurasi
 
@@ -200,7 +199,7 @@ sudo chown odoo:odoo /var/log/odoo
 
 ---
 
-## 🔄 LANGKAH 5: Setup Systemd Service
+## LANGKAH 5: Setup Systemd Service
 
 Agar Odoo jalan otomatis saat server reboot:
 
@@ -243,7 +242,7 @@ sudo systemctl status odoo
 
 ---
 
-## 🌐 LANGKAH 6: Setup Nginx (Reverse Proxy + SSL)
+## LANGKAH 6: Setup Nginx (Reverse Proxy + SSL)
 
 ### 6.1 Install Nginx
 
@@ -352,7 +351,7 @@ sudo certbot renew --dry-run
 
 ---
 
-## 📥 LANGKAH 7: Deploy Custom Module dari Git
+## LANGKAH 7: Deploy Custom Module dari Git
 
 ### 7.1 Clone Custom Addons ke Server
 
@@ -404,7 +403,7 @@ sudo systemctl restart odoo
 
 ---
 
-## 🔄 LANGKAH 8: Workflow Deployment (CI/CD Sederhana)
+##  LANGKAH 8: Workflow Deployment (CI/CD Sederhana)
 
 ### Alur Development → Production
 
@@ -525,7 +524,7 @@ sudo systemctl restart odoo
 
 ---
 
-## 📊 Checklist Deployment
+## Checklist Deployment
 
 | # | Item | Status |
 |---|------|--------|
@@ -544,30 +543,7 @@ sudo systemctl restart odoo
 
 ---
 
-## ❓ FAQ
-
-**Q: Berapa biaya self-host Odoo?**
-A: Odoo Community Edition GRATIS. Biaya hanya untuk:
-- VPS/Server: ±Rp 50-200rb/bulan
-- Domain: ±Rp 100-150rb/tahun
-- SSL: GRATIS (Let's Encrypt)
-- Total: ±Rp 150-350rb/bulan
-
-**Q: Odoo Community vs Enterprise?**
-A: Community = gratis, fitur dasar lengkap. Enterprise = berbayar, ada fitur tambahan (studio, IoT, dll). Untuk UKM, Community sudah sangat cukup.
-
-**Q: Apakah data aman?**
-A: Data ada di server sendiri. Pastikan backup rutin, firewall aktif, dan SSL terpasang.
-
-**Q: Berapa user yang bisa pakai?**
-A: Odoo Community TIDAK ada batasan user. Kalau pakai VPS 4GB RAM, bisa handle 20-50 concurrent user.
-
-**Q: Bagaimana kalau mau upgrade versi Odoo?**
-A: Upgrade versi Odoo (misal 17 → 18) perlu migrasi database. Ini proses yang perlu hati-hati. Sebaiknya dilakukan oleh developer berpengalaman.
-
----
-
-## 📚 Referensi
+## Referensi
 
 Panduan ini disusun berdasarkan sumber-sumber berikut:
 
